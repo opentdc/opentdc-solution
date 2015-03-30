@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="opentdc-solution" default="build" basedir=".">
+
+	<property environment="env"/>
+	<property name="java.build.platform" value="jre-1.7" />
+	
+	<target name="build-projects" description="Build opentdc solution">
+		<ant antfile="../services-generic/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../addressbook-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../addressbook-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../addressbook-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../rates-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../rates-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../rates-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../resources-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../resources-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../resources-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../users-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../users-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../users-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../workrecords-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../workrecords-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../workrecords-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../wtt-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../wtt-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../wtt-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+	</target>
+	
+	<target name="clean">
+		<antcall target="build-projects" inheritAll="false">
+			<param name="target" value="clean" />
+		</antcall>
+		<delete dir="../${java.build.platform}/opentdc-solution" failonerror="false" />
+	</target>
+
+	<target name="deliverables">
+		<antcall target="build-projects" inheritAll="false">
+			<param name="target" value="deliverables" />
+		</antcall>
+	</target>
+	
+	<target name="assemble" depends="deliverables" description="Create WARs for opentdc solution">
+		
+		<!-- opentdc-services-file.war -->
+		<zip destfile="../${java.build.platform}/opentdc-solution/deployment-unit/opentdc-services-file.war">
+			<zipfileset dir="src/war/opentdc-services-file.war" />
+			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbook-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbook-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+		</zip>
+		<!-- opentdc-services-opencrx.war -->
+		<zip destfile="../${java.build.platform}/opentdc-solution/deployment-unit/opentdc-services-opencrx.war">
+			<zipfileset dir="src/war/opentdc-services-opencrx.war" />
+			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbook-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbook-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+		</zip>
+	</target>
+	
+</project>

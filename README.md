@@ -1,1 +1,1 @@
-# opentdc-solution
+# solution

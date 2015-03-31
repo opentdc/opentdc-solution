@@ -1,0 +1,108 @@
+[
+	{
+		title: 'Arbalo AG', 
+		description: 'Backoffice Lösungen für digitale KMUs', 
+		projects: [
+			{ 
+				title: 'Allgemein',
+				description: 'Allgemeine Aktivitäten', 
+				projects: [],
+				resources: []
+			},
+			{ 
+				title: 'BizDev', 
+				description: 'Business Development', 
+				projects: [],
+				resources: [] 
+			},
+			{ 
+				title: 'Partnerschaften',
+				description: 'Aufbau des Partner Netzwerks', 
+				projects: [],
+				resources: [] 
+			},
+			{ 
+				title: 'ProductDevelopment', 
+				description: 'Product Backlog', 
+				projects: [
+					{
+						title: 'Platform',
+						description: 'Plattform Aufbau',
+						projects: [
+							{
+								title: 'Dev Setup',
+								description: 'Aufbau Entwicklungs- und Betriebsumgebung (Continuous Integration auf PaaS)',
+								projects: [],
+								resources: []							
+							},
+							{
+								title: 'Hosting',
+								description: 'Hosting mit RedHat OpenShift v3 (Cloudlynx/PuzzleIT)',
+								projects: [],
+								resources: []							
+							}
+						] 
+					},
+					{
+						title: 'FE',
+						description: 'Frontend Applications (Apps)',
+						projects: [
+							{
+								title: 'Presents',
+								description: 'simple PoC application (pattern: table/grid with ui-grid)',
+								projects: [],
+								resources: []
+							},
+							{
+								title: 'Time',
+								description: 'Work Time Tracking',
+								projects: [],
+								resources: []
+							},
+							{
+								title: 'Addressbook',
+								description: 'Addressbook of Contacts (= People)',
+								projects: [] 
+							}
+						]
+					},
+					{
+						title: 'RS',
+						description: 'REST Services',
+						projects: [],
+						resources: []							
+					},
+					{
+						title: 'BE',
+						description: 'Backend Integrations',
+						projects: [],
+						resources: []							
+					}
+				] 
+			}	
+		]
+	},
+	{
+		title: 'bkaiser GmbH',
+		description: 'The digital disruptor',
+		projects: [],
+		resources: []							
+	},
+	{
+		title: 'Innopunkt AG',
+		description: 'Innovation auf den Punkt gebracht',
+		projects: [],
+		resources: []
+	},
+	{
+		title: 'etops AG',
+		description: 'Middle Office Outsourcing',
+		projects: [] 
+	},
+	{
+		title: 'Sweetest Things GmbH',
+		description: 'Handmade treats by Fräulein Meier',
+		projects: [],
+		resources: []
+	}	
+]

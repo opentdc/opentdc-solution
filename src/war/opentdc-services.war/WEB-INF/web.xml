@@ -1,82 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-version="2.5">
-	<display-name>Addressbook REST Service</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>opentdc services</display-name>
 	<context-param>
-		<param-name>backend.url</param-name>
+		<param-name>AddressbooksService.serviceProvider</param-name>
+		<param-value>org.opentdc.addressbooks.file.FileServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>RatesService.serviceProvider</param-name>
+		<param-value>org.opentdc.rates.opencrx.OpencrxServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ResourcesService.serviceProvider</param-name>
+		<param-value>org.opentdc.resources.opencrx.OpencrxServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>UsersService.serviceProvider</param-name>
+		<param-value>org.opentdc.users.file.FileServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>WorkRecordsService.serviceProvider</param-name>
+		<param-value>org.opentdc.workrecords.opencrx.OpencrxServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>WttService.serviceProvider</param-name>
+		<param-value>org.opentdc.wtt.opencrx.OpencrxServiceProvider</param-value>
+	</context-param>
+	<context-param>
+		<param-name>opencrx.url</param-name>
 		<param-value>http://demo.opencrx.org/opencrx-rest-CRX/</param-value>
 	</context-param>
 	<context-param>
-		<param-name>backend.userName</param-name>
+		<param-name>opencrx.userName</param-name>
 		<param-value>guest</param-value>
 	</context-param>
 	<context-param>
-		<param-name>backend.password</param-name>
+		<param-name>opencrx.password</param-name>
 		<param-value>guest</param-value>
 	</context-param>
 	<context-param>
-		<param-name>backend.mimeType</param-name>
+		<param-name>opencrx.mimeType</param-name>
 		<param-value>application/vnd.openmdx.wbxml</param-value>
 	</context-param>
-	<!-- <context-param> <param-name>backend.url</param-name> <param-value>http://127.0.0.1:8080/opencrx-rest-CRX/</param-value> 
-		</context-param> <context-param> <param-name>backend.userName</param-name> 
-		<param-value>admin-Standard</param-value> </context-param> <context-param> 
-		<param-name>backend.password</param-name> <param-value>admin-Standard</param-value> 
-		</context-param> <context-param> <param-name>backend.mimeType</param-name> 
-		<param-value>application/vnd.openmdx.wbxml</param-value> </context-param> -->
 	<context-param>
-		<param-name>backend.providerName</param-name>
+		<param-name>opencrx.providerName</param-name>
 		<param-value>CRX</param-value>
 	</context-param>
 	<context-param>
-		<param-name>backend.segmentName</param-name>
+		<param-name>opencrx.segmentName</param-name>
 		<param-value>Standard</param-value>
-	</context-param>	
+	</context-param>
 	<servlet>
-		<servlet-name>AddressbookService</servlet-name>
+		<servlet-name>CXFServlet</servlet-name>
 		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
 		<init-param>
 			<param-name>jaxrs.serviceClasses</param-name>
-			<param-value>org.opentdc.addressbooks.AddressbookService</param-value>
+			<param-value>
+				org.opentdc.addressbooks.AddressbooksService,
+				org.opentdc.rates.RatesService,
+				org.opentdc.resources.ResourcesService,
+				org.opentdc.users.UsersService,
+				org.opentdc.workrecords.WorkRecordsService,
+				org.opentdc.wtt.WttService
+			</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>	
+		<init-param>
+			<param-name>jaxrs.providers</param-name>
+			<param-value>
+				org.opentdc.addressbooks.AddressbooksProvider,
+				org.opentdc.rates.RatesProvider,
+				org.opentdc.resources.ResourcesProvider,
+				org.opentdc.users.UsersProvider,
+				org.opentdc.workrecords.WorkRecordsProvider,
+				org.opentdc.wtt.WttProvider
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-	   <servlet-name>AddressbookService</servlet-name>
+	   <servlet-name>CXFServlet</servlet-name>
 	   <url-pattern>/*</url-pattern>
 	</servlet-mapping>
-<filter>
-  <filter-name>CorsFilter</filter-name>
-  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
-  <init-param>
-    <param-name>cors.allowed.origins</param-name>
-    <param-value>*</param-value>
-  </init-param>
-  <init-param>
-    <param-name>cors.allowed.methods</param-name>
-    <param-value>GET,POST,HEAD,DELETE,OPTIONS,PUT</param-value>
-  </init-param>
-  <init-param>
-    <param-name>cors.allowed.headers</param-name>
-    <param-value>Authorization,Accept,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
-  </init-param>
-  <init-param>
-    <param-name>cors.exposed.headers</param-name>
-    <param-value>Access-Control-Allow-Origin,Access-Control-Allow-Credentials</param-value>
-  </init-param>
-  <init-param>
-    <param-name>cors.support.credentials</param-name>
-    <param-value>true</param-value>
-  </init-param>
-  <init-param>
-    <param-name>cors.preflight.maxage</param-name>
-    <param-value>10</param-value>
-  </init-param>
-</filter>
-<filter-mapping>
-  <filter-name>CorsFilter</filter-name>
-  <url-pattern>/*</url-pattern>
-</filter-mapping>
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowed.origins</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.methods</param-name>
+			<param-value>GET,POST,HEAD,DELETE,OPTIONS,PUT</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>Authorization,Accept,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.exposed.headers</param-name>
+			<param-value>Access-Control-Allow-Origin,Access-Control-Allow-Credentials</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.support.credentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.preflight.maxage</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

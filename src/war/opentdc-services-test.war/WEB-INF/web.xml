@@ -2,9 +2,9 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<display-name>opentdc services</display-name>
+	<display-name>opentdc test services</display-name>
 	<context-param>
-		<param-name>AddressbookService.serviceProvider</param-name>
+		<param-name>AddressbooksService.serviceProvider</param-name>
 		<param-value>org.opentdc.addressbooks.file.FileServiceProvider</param-value>
 	</context-param>
 	<context-param>
@@ -33,10 +33,10 @@
 		<init-param>
 			<param-name>jaxrs.serviceClasses</param-name>
 			<param-value>
-				org.opentdc.addressbooks.AddressbookService,
+				org.opentdc.addressbooks.AddressbooksService,
 				org.opentdc.rates.RatesService,
 				org.opentdc.resources.ResourcesService,
-				org.opentdc.users.UserService,
+				org.opentdc.users.UsersService,
 				org.opentdc.workrecords.WorkRecordsService,
 				org.opentdc.wtt.WttService
 			</param-value>
@@ -44,14 +44,14 @@
 		<init-param>
 			<param-name>jaxrs.providers</param-name>
 			<param-value>
-				org.opentdc.addressbooks.AddressbookProvider,
+				org.opentdc.addressbooks.AddressbooksProvider,
 				org.opentdc.rates.RatesProvider,
 				org.opentdc.resources.ResourcesProvider,
-				org.opentdc.users.UserProvider,
+				org.opentdc.users.UsersProvider,
 				org.opentdc.workrecords.WorkRecordsProvider,
 				org.opentdc.wtt.WttProvider
 			</param-value>
-		</init-param>		
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

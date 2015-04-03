@@ -30,7 +30,7 @@
 		<antcall target="build-projects" inheritAll="false">
 			<param name="target" value="clean" />
 		</antcall>
-		<delete dir="../${java.build.platform}/opentdc-solution" failonerror="false" />
+		<delete dir="../${java.build.platform}/solution" failonerror="false" />
 	</target>
 
 	<target name="deliverables">
@@ -42,8 +42,8 @@
 	<target name="assemble" depends="deliverables" description="Create WARs for opentdc solution">
 		
 		<!-- opentdc-services-file.war -->
-		<zip destfile="../${java.build.platform}/opentdc-solution/deployment-unit/opentdc-services-file.war">
-			<zipfileset dir="src/war/opentdc-services-file.war" />
+		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-test.war">
+			<zipfileset dir="src/war/opentdc-services-test.war" />
 			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbook-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbook-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
@@ -60,8 +60,8 @@
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
 		</zip>
 		<!-- opentdc-services-opencrx.war -->
-		<zip destfile="../${java.build.platform}/opentdc-solution/deployment-unit/opentdc-services-opencrx.war">
-			<zipfileset dir="src/war/opentdc-services-opencrx.war" />
+		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services.war">
+			<zipfileset dir="src/war/opentdc-services.war" />
 			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbook-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbook-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />

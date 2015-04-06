@@ -2,7 +2,14 @@
 
 ## Build
 
+Prerequsites:
+* JDK 7 must be installed
+* ant must be installed
+* The environment variable CXF_HOME must be set
+
+    export CXF_HOME='path to CXF home directory'
 		cd solution
+		ant clean
 		ant assemble
 
 This builds the WARs at jre-1.7/solution/deployment-unit/ containing
@@ -45,6 +52,7 @@ Testing the file service providers with:
 
 Testing the main service providers with:
 
+		cd test-solution
 		ant -Dservice.url="http://localhost:9080/opentdc-services/" test
 
 ## Eclipse

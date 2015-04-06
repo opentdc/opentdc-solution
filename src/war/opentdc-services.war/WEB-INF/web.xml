@@ -9,7 +9,7 @@
 	</context-param>
 	<context-param>
 		<param-name>RatesService.serviceProvider</param-name>
-		<param-value>org.opentdc.rates.opencrx.OpencrxServiceProvider</param-value>
+		<param-value>org.opentdc.rates.file.FileServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>ResourcesService.serviceProvider</param-name>
@@ -21,7 +21,7 @@
 	</context-param>
 	<context-param>
 		<param-name>WorkRecordsService.serviceProvider</param-name>
-		<param-value>org.opentdc.workrecords.opencrx.OpencrxServiceProvider</param-value>
+		<param-value>org.opentdc.workrecords.file.FileServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>WttService.serviceProvider</param-name>

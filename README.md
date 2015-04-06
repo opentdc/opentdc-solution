@@ -6,12 +6,12 @@ Prerequsites:
 
 * JDK 7 must be installed
 * ant must be installed
-* The environment variable CXF_HOME must be set
 
 		export CXF_HOME='path to CXF home directory'
 		cd solution
 		ant clean
 		ant assemble
+
 
 This builds the WARs at jre-1.7/solution/deployment-unit/ containing
 the (JAX-RS compliant) middletier services:
@@ -35,7 +35,7 @@ Backend-Container running openCRX.
 
 ### opentdc-services
 
-Container running the middletier services (e.g. opentdc-services.war, opentdc-services-test.war)
+Container running the middletier services (e.g. opentdc-services.war, opentdc-services-test.war).
 This container is linked to the opentdc-opencrx container using the --link option.
 
 		cd opentdc/installer/src/docker/opentdc-services/1.0

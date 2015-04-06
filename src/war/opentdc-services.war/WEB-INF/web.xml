@@ -29,7 +29,7 @@
 	</context-param>
 	<context-param>
 		<param-name>opencrx.url</param-name>
-		<param-value>http://demo.opencrx.org/opencrx-rest-CRX/</param-value>
+		<param-value>http://opentdc-opencrx/opencrx-rest-CRX/</param-value>
 	</context-param>
 	<context-param>
 		<param-name>opencrx.userName</param-name>

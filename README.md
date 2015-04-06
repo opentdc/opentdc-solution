@@ -3,11 +3,12 @@
 ## Build
 
 Prerequsites:
+
 * JDK 7 must be installed
 * ant must be installed
 * The environment variable CXF_HOME must be set
 
-    export CXF_HOME='path to CXF home directory'
+		export CXF_HOME='path to CXF home directory'
 		cd solution
 		ant clean
 		ant assemble

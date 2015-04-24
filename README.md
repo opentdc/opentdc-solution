@@ -28,6 +28,8 @@ the (JAX-RS compliant) middletier services:
 
 Backend-Container running openCRX.
 
+		cd opentdc/installer/src/docker/opencrx/3.0
+		sudo docker build -t opencrx:latest .
 		cd opentdc/installer/src/docker/opentdc-opencrx/3.0
 		sudo docker build -t opentdc-opencrx:latest .
 		sudo docker run -d -p 8080:80 -p 8009:8009 -p 1143:1143 -p 1389:1389 -p 8001:8001 --name opentdc-opencrx opentdc-opencrx:latest

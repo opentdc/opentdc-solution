@@ -62,3 +62,7 @@ Testing the main service providers with:
 
 All projects come with .project / .classpath files. You can import them in
 Eclipse.
+
+[Eclipse Setup 1](./opentdc-eclipse-setup1.png)
+
+[Eclipse Setup 2](./opentdc-eclipse-setup2.png)

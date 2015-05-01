@@ -46,12 +46,22 @@ This container is linked to the opentdc-opencrx container using the --link optio
 		opentdc-services:latest
 		sudo docker logs -f opentdc-services
 
+### Other Operating Systems than Linux
+On Mac OS/X or Windows, [boot2docker](http://boot2docker.io) is needed, a lightweight Linux distribution based on Tiny Core Linux made specifically to run Docker containers. It runs completely from RAM, weighs 27 MB and boots in 5s.
+The instructions to install the docker containers are the same as above with the following exceptions:
+* run the commands from within boot2docker
+* sudo is not needed
+* get the IP address of the boot2docker VM with 'boot2docker ip' (instead of localhost)
+
 ### Running JUnits
 
 Testing the file service providers with:
 
 		cd test-solution
 		ant -Dservice.url="http://localhost:9080/opentdc-services-test/" test
+on Mac or Windows:
+		cd test-solution
+		ant -Dservice.url="http://`boot2docker ip`:9080/opentdc-services-test/" test
 
 Testing the main service providers with:
 

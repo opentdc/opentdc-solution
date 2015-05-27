@@ -8,6 +8,7 @@
 	
 	<target name="build-projects" description="Build opentdc solution">
 		<ant antfile="../services-generic/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../services-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../services-opencrx/build.xml" target="${target}" inheritAll="false" />	
 		<ant antfile="../addressbooks-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../addressbooks-service-file/build.xml" target="${target}" inheritAll="false" />		
@@ -44,10 +45,11 @@
 	
 	<target name="assemble" depends="deliverables" description="Create WARs for opentdc solution">
 		
-		<!-- opentdc-services-file.war -->
+		<!-- opentdc-services-test.war -->
 		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-test.war">
 			<zipfileset dir="src/war/opentdc-services-test.war" />
 			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbooks-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />

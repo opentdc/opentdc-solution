@@ -63,6 +63,7 @@
 			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/wtt-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger-core-1.5.0/modules/swagger-annotations/target/" includes="swagger-annotations-1.5.0.jar" prefix="WEB-INF/lib" />			
 		</zip>
 		<!-- opentdc-services.war -->
 		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services.war">
@@ -82,6 +83,7 @@
 			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/wtt-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger-core-1.5.0/modules/swagger-annotations/target/" includes="swagger-annotations-1.5.0.jar" prefix="WEB-INF/lib" />			
 			<zipfileset dir="${openmdx.home}/${java.build.platform}/client/lib/" includes="openmdx-client.jar" prefix="WEB-INF/lib" />			
 			<zipfileset dir="${opencrx.home}/${java.build.platform}/core/lib/" includes="opencrx-client.jar" prefix="WEB-INF/lib" />			
 		</zip>

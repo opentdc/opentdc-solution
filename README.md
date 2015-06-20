@@ -21,6 +21,14 @@ the (JAX-RS compliant) middletier services:
 * opentdc-services.war: used as template for production use and uses
   the main service providers (such as openCRX) as backend (see web.xml
   for more details).
+  
+Copy the war-files manually into the installer project:
+
+		cd opentdc
+		cp jre-1.7/solution/deployment-unit/*.war installer/src/docker/opentdc-services/1.0/files
+		
+If you do not want to build the project, it is sufficient to clone the project 'installer'.
+It already contains the war-files in a current version.
 
 ## Run Docker / JUnits
 

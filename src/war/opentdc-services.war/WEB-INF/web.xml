@@ -5,7 +5,7 @@
 	<display-name>opentdc services</display-name>
 	<context-param>
 		<param-name>AddressbooksService.serviceProvider</param-name>
-		<param-value>org.opentdc.addressbooks.file.FileServiceProvider</param-value>
+		<param-value>org.opentdc.addressbooks.opencrx.OpencrxServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>RatesService.serviceProvider</param-name>

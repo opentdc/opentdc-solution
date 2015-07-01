@@ -63,11 +63,13 @@ The instructions to install the docker containers are the same as above with the
 
 ### Running JUnits
 
-Testing the file service providers with:
+Testing the file service providers with service running in local docker:
 
 		cd test-solution
 		ant -Dservice.url="http://localhost:9080/opentdc-services-test/" test
-on Mac or Windows:
+
+Testing the file service providers on Mac/Windows with service running in boot2docker:
+
 		cd test-solution
 		ant -Dservice.url="http://`boot2docker ip`:9080/opentdc-services-test/" test
 
@@ -75,6 +77,11 @@ Testing the main service providers with:
 
 		cd test-solution
 		ant -Dservice.url="http://localhost:9080/opentdc-services/" test
+	
+Testing only one test case:
+
+		cd test-solution
+		ant -Djunit.test.case=AddressTest test	
 
 ## Eclipse
 

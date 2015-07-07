@@ -21,7 +21,7 @@
 	</context-param>
 	<context-param>
 		<param-name>WorkRecordsService.serviceProvider</param-name>
-		<param-value>org.opentdc.workrecords.file.FileServiceProvider</param-value>
+		<param-value>org.opentdc.workrecords.opencrx.OpencrxServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>WttService.serviceProvider</param-name>

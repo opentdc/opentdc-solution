@@ -27,6 +27,10 @@
 		<param-name>WttService.serviceProvider</param-name>
 		<param-value>org.opentdc.wtt.file.FileServiceProvider</param-value>
 	</context-param>
+	<context-param>
+		<param-name>TagsService.serviceProvider</param-name>
+		<param-value>org.opentdc.tags.file.FileServiceProvider</param-value>
+	</context-param>
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
 		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
@@ -38,7 +42,8 @@
 				org.opentdc.resources.ResourcesService,
 				org.opentdc.users.UsersService,
 				org.opentdc.workrecords.WorkRecordsService,
-				org.opentdc.wtt.WttService
+				org.opentdc.wtt.WttService,
+				org.opentdc.tags.TagsService
 			</param-value>
 		</init-param>
 		<init-param>
@@ -49,7 +54,8 @@
 				org.opentdc.resources.ResourcesProvider,
 				org.opentdc.users.UsersProvider,
 				org.opentdc.workrecords.WorkRecordsProvider,
-				org.opentdc.wtt.WttProvider
+				org.opentdc.wtt.WttProvider,
+				org.opentdc.tags.TagsProvider
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

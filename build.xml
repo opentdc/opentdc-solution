@@ -30,7 +30,6 @@
 		<ant antfile="../wtt-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../tags-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../tags-service-file/build.xml" target="${target}" inheritAll="false" />		
-		<ant antfile="../tags-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
 	</target>
 	
 	<target name="clean">

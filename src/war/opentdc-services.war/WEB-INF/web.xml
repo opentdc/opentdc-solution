@@ -9,7 +9,7 @@
 	</context-param>
 	<context-param>
 		<param-name>RatesService.serviceProvider</param-name>
-		<param-value>org.opentdc.rates.file.FileServiceProvider</param-value>
+		<param-value>org.opentdc.rates.opencrx.OpencrxServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>ResourcesService.serviceProvider</param-name>
@@ -27,6 +27,10 @@
 		<param-name>WttService.serviceProvider</param-name>
 		<param-value>org.opentdc.wtt.opencrx.OpencrxServiceProvider</param-value>
 	</context-param>
+	<context-param>
+		<param-name>TagsService.serviceProvider</param-name>
+		<param-value>org.opentdc.tags.file.FileServiceProvider</param-value>
+	</context-param>	
 	<context-param>
 		<param-name>opencrx.url</param-name>
 		<param-value>http://opentdc-opencrx/opencrx-rest-CRX/</param-value>
@@ -62,7 +66,8 @@
 				org.opentdc.resources.ResourcesService,
 				org.opentdc.users.UsersService,
 				org.opentdc.workrecords.WorkRecordsService,
-				org.opentdc.wtt.WttService
+				org.opentdc.wtt.WttService,
+				org.opentdc.tags.TagsService
 			</param-value>
 		</init-param>
 		<init-param>
@@ -73,7 +78,8 @@
 				org.opentdc.resources.ResourcesProvider,
 				org.opentdc.users.UsersProvider,
 				org.opentdc.workrecords.WorkRecordsProvider,
-				org.opentdc.wtt.WttProvider
+				org.opentdc.wtt.WttProvider,
+				org.opentdc.tags.TagsProvider
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

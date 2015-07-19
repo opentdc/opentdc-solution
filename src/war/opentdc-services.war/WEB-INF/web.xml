@@ -29,7 +29,7 @@
 	</context-param>
 	<context-param>
 		<param-name>TagsService.serviceProvider</param-name>
-		<param-value>org.opentdc.tags.file.FileServiceProvider</param-value>
+		<param-value>org.opentdc.tags.opencrx.OpencrxServiceProvider</param-value>
 	</context-param>	
 	<context-param>
 		<param-name>opencrx.url</param-name>

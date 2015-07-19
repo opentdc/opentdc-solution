@@ -31,6 +31,11 @@
 		<param-name>TagsService.serviceProvider</param-name>
 		<param-value>org.opentdc.tags.file.FileServiceProvider</param-value>
 	</context-param>
+	<context-param>
+		<param-name>EventsService.serviceProvider</param-name>
+		<param-value>org.opentdc.events.file.FileServiceProvider</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>
 		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
@@ -43,7 +48,8 @@
 				org.opentdc.users.UsersService,
 				org.opentdc.workrecords.WorkRecordsService,
 				org.opentdc.wtt.WttService,
-				org.opentdc.tags.TagsService
+				org.opentdc.tags.TagsService,
+				org.opentdc.events.EventsService
 			</param-value>
 		</init-param>
 		<init-param>
@@ -55,7 +61,8 @@
 				org.opentdc.users.UsersProvider,
 				org.opentdc.workrecords.WorkRecordsProvider,
 				org.opentdc.wtt.WttProvider,
-				org.opentdc.tags.TagsProvider
+				org.opentdc.tags.TagsProvider,
+				org.opentdc.events.EventsProvider
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

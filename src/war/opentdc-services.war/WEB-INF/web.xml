@@ -73,13 +73,7 @@
 		<init-param>
 			<param-name>jaxrs.providers</param-name>
 			<param-value>
-				org.opentdc.addressbooks.AddressbooksProvider,
-				org.opentdc.rates.RatesProvider,
-				org.opentdc.resources.ResourcesProvider,
-				org.opentdc.users.UsersProvider,
-				org.opentdc.workrecords.WorkRecordsProvider,
-				org.opentdc.wtt.WttProvider,
-				org.opentdc.tags.TagsProvider
+				org.opentdc.service.GenericProvider
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

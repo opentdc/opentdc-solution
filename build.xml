@@ -28,10 +28,11 @@
 		<ant antfile="../wtt-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../wtt-service-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../wtt-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
-		<ant antfile="../events-service/build.xml" target="${target}" inheritAll="false" />		
-		<ant antfile="../events-service-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../tags-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../tags-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../tags-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../events-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../events-service-file/build.xml" target="${target}" inheritAll="false" />		
 	</target>
 	
 	<target name="clean">
@@ -84,7 +85,7 @@
 			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbooks-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
-			<zipfileset dir="../${java.build.platform}/rates-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/resources-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
@@ -94,7 +95,7 @@
 			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/wtt-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" /> 
 			<zipfileset dir="../${java.build.platform}/tags-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
-			<zipfileset dir="../${java.build.platform}/tags-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/tags-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
 <!--
 			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			

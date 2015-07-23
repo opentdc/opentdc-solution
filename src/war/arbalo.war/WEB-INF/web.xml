@@ -2,46 +2,10 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<display-name>opentdc test services</display-name>
-	<context-param>
-		<param-name>AddressbooksService.serviceProvider</param-name>
-		<param-value>org.opentdc.addressbooks.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>RatesService.serviceProvider</param-name>
-		<param-value>org.opentdc.rates.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>ResourcesService.serviceProvider</param-name>
-		<param-value>org.opentdc.resources.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>UsersService.serviceProvider</param-name>
-		<param-value>org.opentdc.users.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>WorkRecordsService.serviceProvider</param-name>
-		<param-value>org.opentdc.workrecords.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>WttService.serviceProvider</param-name>
-		<param-value>org.opentdc.wtt.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>TagsService.serviceProvider</param-name>
-		<param-value>org.opentdc.tags.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>TextsService.serviceProvider</param-name>
-		<param-value>org.opentdc.texts.file.FileServiceProvider</param-value>
-	</context-param>
+	<display-name>Arbalo Website</display-name>
 	<context-param>
 		<param-name>EventsService.serviceProvider</param-name>
 		<param-value>org.opentdc.events.file.FileServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>GiftsService.serviceProvider</param-name>
-		<param-value>org.opentdc.gifts.file.FileServiceProvider</param-value>
 	</context-param>
 	
 	<servlet>
@@ -50,15 +14,6 @@
 		<init-param>
 			<param-name>jaxrs.serviceClasses</param-name>
 			<param-value>
-				org.opentdc.addressbooks.AddressbooksService,
-				org.opentdc.rates.RatesService,
-				org.opentdc.resources.ResourcesService,
-				org.opentdc.users.UsersService,
-				org.opentdc.workrecords.WorkRecordsService,
-				org.opentdc.wtt.WttService,
-				org.opentdc.tags.TagsService,
-				org.opentdc.texts.TextsService,
-				org.opentdc.gifts.GiftsService,
 				org.opentdc.events.EventsService
 			</param-value>
 		</init-param>
@@ -74,6 +29,27 @@
 	   <servlet-name>CXFServlet</servlet-name>
 	   <url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>
+          org.apache.catalina.servlets.DefaultServlet
+        </servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>default</servlet-name>
+    	<url-pattern>/static/*</url-pattern>
+	</servlet-mapping>
+    
+	<!--
 	<filter>
 		<filter-name>CorsFilter</filter-name>
 		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
@@ -106,4 +82,5 @@
 		<filter-name>CorsFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	-->
 </web-app>

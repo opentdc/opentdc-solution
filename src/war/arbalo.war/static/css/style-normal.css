@@ -1,0 +1,33 @@
+/*
+	Iconic by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+*/
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+	body,input,textarea,select {
+		font-size: 13pt;
+	}
+
+	/* Pennant */
+
+		.pennant {
+		}
+		
+			.pennant span:before {
+				font-size: 84px;
+			}			
+	
+	/* Lists */
+
+		ul.pennants {
+		}
+		
+			ul.pennants li {
+				width: 48%;
+				max-width: 100%;
+				padding: 1em 2em;
+			}

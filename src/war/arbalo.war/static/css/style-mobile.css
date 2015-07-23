@@ -1,0 +1,162 @@
+/*
+	Iconic by Pixelarity
+	pixelarity.com @pixelarity
+	License: pixelarity.com/license
+*/
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+	body,input,textarea,select {
+		font-size: 12pt;
+		text-align: justify;
+	}
+
+	h2 {
+		font-size: 1.25em;
+		margin: 0 0 1.5em 0;
+	}
+
+	h3 {
+		font-size: 1em;
+		margin: 0 0 0.5em 0;
+	}
+	
+	/* Buttons */
+
+		.button {
+			line-height: 2.5em;
+			display: block;
+			width: 100%;
+			padding: 0em 1.5em;
+			font-size: 1em !important;
+			letter-spacing: 0 !important;
+		}
+
+	/* Lists */
+
+		ul.style1 {
+		}
+		
+			ul.style1 > li {
+				width: 100% !important;
+				border-left-width: 0;
+				border-top-width: 2px;
+				padding: 2em 0 0 0;
+				margin: 1em 0 0 0;
+			}
+
+			ul.style1 > li:first-child {
+				border-top-width: 0;
+				padding-top: 0;
+				margin-top: 0;
+			}
+			
+		ul.icons {
+		}
+		
+			ul.icons > li {
+				display: block;
+				width: 100%;
+				margin: 1em 0 0 0 !important;
+			}
+
+		ul.pennants {
+		}
+		
+			ul.pennants li {
+				width: 100%;
+				padding: 0.5em 0;
+			}
+			
+		ul.actions {
+			text-align: center;
+		}
+		
+			ul.actions li {
+				display: block;
+				margin: 1em 0 0 0;
+			}
+
+			ul.actions li:first-child {
+				margin-top: 0;
+			}
+
+	/* Main Title Heading */
+
+		.title-heading {
+			margin: 1.5em 0 1em 0;
+			text-align: center;
+		}
+		
+			.title-heading h2 {
+				font-size: 1.5em;
+			}
+
+			.title-heading p {
+				position: relative;
+				font-size: 1em;
+			}
+			
+/*********************************************************************************/
+/* Wrappers                                                                      */
+/*********************************************************************************/
+
+	#header-wrapper {
+	}
+	
+	#main-wrapper {
+		padding: 0 0 2em 0;
+	}
+	
+		.homepage #main-wrapper {
+			padding: 2.5em 20px 2.5em 20px;
+		}
+	
+	#footer-wrapper {
+		padding: 6em 20px 2em 20px;
+	}
+	
+	#featured-wrapper {
+		padding: 6em 20px 2em 20px;
+	}
+	
+/*********************************************************************************/
+/* Banner                                                                        */
+/*********************************************************************************/
+
+	#banner {
+	}
+
+		#banner .major {
+		}
+	
+			#banner .major h2 {
+				font-size: 2.5em;
+				line-height: 1.1em;
+				margin-bottom: 1em;
+			}
+			
+			#banner .major p {
+				top: -1em;
+				font-size: 1.25em;
+				margin: 0;
+			}
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main {
+		border-radius: 0;
+		padding: 2em 20px;
+	}
+	
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+
+	#copyright {
+		padding: 2em 0em;
+	}

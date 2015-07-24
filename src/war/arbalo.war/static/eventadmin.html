@@ -5,12 +5,12 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		<style>
 			body{padding:40px;}
 		</style>
-		<script src="js/angular.min.js"></script>
-		<script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.min.js"></script>		
         <script type="text/javascript">
 		var app = angular.module('eventApp', ['ui.bootstrap']);
 		app.config(function($httpProvider) {
@@ -33,7 +33,8 @@
 				}
 			}
 			Data.list().then(function(result) {
-				$scope.init.data=result.data.eventsModel;
+				$scope.init.data=result.data.eventModel;
+				console.log($scope.init.data)
 			}, function(reason) {//error
 				console.log('Could not get event. '+reason.status+': '+reason.statusText);						
 			});		
@@ -107,9 +108,9 @@
 					}	
 					$scope.updateItem = function(item){
 						Data.put(item).then(function(result) {
-			        		var index=$scope.source.data.map(function(a){return a.id}).indexOf(result.data.eventsModel.id);
+			        		var index=$scope.source.data.map(function(a){return a.id}).indexOf(result.data.eventModel.id);
 			        		if(index!==-1){
-			        			$scope.source.data[index] = result.data.eventsModel;
+			        			$scope.source.data[index] = result.data.eventModel;
 			        		}
 			        		$scope.resetForm();	
 				   		}, function(reason) {//error
@@ -117,8 +118,8 @@
 						});
 					}	
 					$scope.addupdateClient = function(){
-						Data.post($scope.formOPT.newOBJ).then(function(result) {						
-			        		$scope.source.data.push(result.data.eventsModel);
+						Data.post($scope.formOPT.newOBJ).then(function(result) {					
+			        		$scope.source.data.push(result.data.eventModel);
 			        		$scope.resetForm();		
 				   		}, function(reason) {//error
 				   			console.log('Could not create event. '+reason.status+': '+reason.statusText);		
@@ -167,7 +168,7 @@
 		});
 		app.factory("Data", ['$http',
 		    function ($http) { 
-		        var serviceBase = 'http://localhost:8080/opentdc-services-test/api/event';
+		        var serviceBase = 'http://localhost:8080/arbalo/api/event';
 		        var obj = {};
 		        obj.list = function () {
 					return $http.get(serviceBase)
@@ -178,7 +179,7 @@
 					});		        	
 		        };
 				obj.post = function(item) {			
-					var data = {eventsModel:item};
+					var data = {eventModel:item};
 					return $http.post(serviceBase, data)
 					.success(function(data, status) {				
 					})
@@ -187,7 +188,7 @@
 					});
 				};		        
 		        obj.put = function (item) {
-					var data = {eventsModel:item};
+					var data = {eventModel:item};
 					return $http.put(serviceBase + '/' + item.id, data)
 					.success(function(data, status) {				
 					})

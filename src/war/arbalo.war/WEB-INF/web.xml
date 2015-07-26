@@ -5,7 +5,7 @@
 	<display-name>Arbalo Website</display-name>
 	<context-param>
 		<param-name>EventsService.serviceProvider</param-name>
-		<param-value>org.opentdc.events.file.FileServiceProvider</param-value>
+		<param-value>org.opentdc.events.mongo.MongodbServiceProvider</param-value>
 	</context-param>
 	
 	<servlet>

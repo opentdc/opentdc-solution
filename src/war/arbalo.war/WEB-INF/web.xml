@@ -7,6 +7,38 @@
 		<param-name>EventsService.serviceProvider</param-name>
 		<param-value>org.opentdc.events.mongo.MongodbServiceProvider</param-value>
 	</context-param>
+	<context-param>
+		<param-name>TemplateDir</param-name>
+		<param-value>EventsService/templates</param-value>
+	</context-param>
+	<context-param>
+		<param-name>smtpHost</param-name>
+		<param-value>yourSmtpHost</param-value>
+	</context-param>
+	<context-param>
+		<param-name>smtpUser</param-name>
+		<param-value>yourSmtpUserEmailAddress</param-value>
+	</context-param>
+	<context-param>
+		<param-name>smtpPassword</param-name>
+		<param-value>yourSmtpPassword</param-value>
+	</context-param>
+	<context-param>
+		<param-name>mongodbHost</param-name>
+		<param-value>localhost:27017</param-value>
+	</context-param>
+	<context-param>
+		<param-name>mongodbName</param-name>
+		<param-value>arbalo</param-value>
+	</context-param>
+	<context-param>
+		<param-name>mongodbUser</param-name>
+		<param-value>arbalo</param-value>
+	</context-param>
+	<context-param>
+		<param-name>mongodbPwd</param-name>
+		<param-value></param-value>
+	</context-param>
 	
 	<servlet>
 		<servlet-name>CXFServlet</servlet-name>

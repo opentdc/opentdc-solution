@@ -68,6 +68,7 @@
 			<zipfileset dir="../${java.build.platform}/events-service-mongo/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
 			<zipfileset dir="../opt/mongodb/${java.build.platform}/mongo-java-driver/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/freemarker/${java.build.platform}/freemarker-2.3.23/" includes="*.jar" prefix="WEB-INF/lib" />			
 		</zip>
 	</target>
 	

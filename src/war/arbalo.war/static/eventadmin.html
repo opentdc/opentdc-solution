@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		<style>
 			body{padding:40px;}
+			.myModal{position:absolute;top:10%;left:10%;width:80%;z-index: 10; -webkit-transition: all 0.5s;  transition: all 0.5s;}
+			.myModal-hide{height:0px;overflow:hidden;}
+			.myModal.myModal-show {height:80%}			
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.min.js"></script>		
@@ -28,6 +31,7 @@
 					firstName:{type:'text'},
 					lastName:{type:'text'},
 					email:{type:'text'},
+					contact:{type:'text'},
 					comment:{type:'text'},
 					invitationState:{type:'select', options:['INITIAL', 'SENT', 'REGISTERED', 'EXCUSED']}
 				}
@@ -37,7 +41,7 @@
 				console.log($scope.init.data)
 			}, function(reason) {//error
 				console.log('Could not get event. '+reason.status+': '+reason.statusText);						
-			});		
+			});				
 		});	
 		</script>
 	</head>
@@ -45,7 +49,7 @@
 		<div class="container-fluid" ng-controller="appCtrl">
 			<div class="row">
 				<div class="col-md-12">
-					<div simple-crud source="init" id="id" url="clients"></div>
+					<div simple-crud source="init" id="id"></div>
 				</div>
 			</div>
 		</div>
@@ -56,8 +60,7 @@
 				replace:true,
 				scope: {
 					source:'=',
-					id:'@',
-					url:'@'
+					id:'@'
 				}, 
 				template: function(e, attr){		
 					var HTML='<div>';
@@ -85,18 +88,20 @@
 				    HTML+='				<div ng-if="formOPT.edit===item[id]"><div input-types model="item" k="key" v="source.structure[key]"></div></div>';
 				    HTML+='			</td>';
 				    HTML+='			<td>';
-				    HTML +='			<a href="javascript:void(0)" ng-if="formOPT.edit!==item[id]" ng-click="editItem(item)"><i class="fa fa-pencil fa-fw"></i>Edit</a>';
+				    HTML +='			<a href="javascript:void(0)" ng-if="formOPT.edit!==item[id]" ng-click="editItem(item)">Edit | </a><a href="javascript:void(0)" ng-if="formOPT.edit!==item[id]" ng-click="showMessage(item)">Show | </a><a href="javascript:void(0)" ng-if="formOPT.edit!==item[id] && item.invitationState!==\'REGISTERED\' && item.invitationState!==\'EXCUSED\'" ng-click="sendMessage(item)">Send | </a><a href="event.html?id={{item.id}}" target="_blank" ng-if="formOPT.edit!==item[id]" ng-click="sendMessage(item)">Show event page</a> ';
 				    HTML +='			<span ng-if="formOPT.edit===item[id]"><button class="btn btn-success" ng-click="updateItem(item)">Save</button> <button class="btn btn-warning" ng-click="formOPT.edit=0">Cancel</button> <button class="btn btn-danger" ng-click="deleteItem(item)">Delete</button></span>';		    
 				    HTML+='			</td>';
 				    HTML+='    </tr>';
 					HTML+='		</tbody>';	
 					HTML+='</table>';
-				    HTML+='<div class="well" ng-if="!source.data.length"><i class="fa fa-times fa-fw"></i> No records</div>';			
+				    HTML+='<div class="well" ng-if="!source.data.length"><i class="fa fa-times fa-fw"></i> No records</div>';
+				    HTML+='<div class="myModal" ng-class="modal.modalClass"><pre>{{modal.modalContent}}</pre><button class="btn btn-success" ng-click="sendMessage(modal.modalItem)">Send</button> <button ng-click="modal.modalClass=\'myModal-hide\'" class="btn btn-warning">Cancel</button></div>';
 				    HTML+='</div>';
 				    return HTML;
 				},		
 				controller: function($scope, Data){
 					$scope.formOPT={show:0,edit:0, newOBJ:{}}
+					$scope.modal = {modalClass:'myModal-hide', modalContent:'', modalItem:''};
 					$scope.addItem = function(){
 						$scope.formOPT.show=1;
 					}
@@ -134,6 +139,27 @@
 				   			console.log('Could not delete event. '+reason.status+': '+reason.statusText);		
 						});							
 					};
+					$scope.showMessage = function(item){
+						Data.showMsg(item.id).then(function(result) {
+							$scope.modal.modalClass='myModal-show';
+							$scope.modal.modalItem=item;							
+							$scope.modal.modalContent = result.data;
+				   		}, function(reason) {//error
+				   			console.log('Could not show message. '+reason.status+': '+reason.statusText);		
+						});	
+					};
+					$scope.sendMessage = function(item){
+						Data.sendMsg(item.id).then(function(result) {
+							Data.list().then(function(result) {
+								$scope.source.data=result.data.eventModel;
+								$scope.modal.modalClass='myModal-hide';
+							}, function(reason) {//error
+								console.log('Message sent, but could not get event list. '+reason.status+': '+reason.statusText);						
+							});														
+				   		}, function(reason) {//error
+				   			console.log('Could not send message. '+reason.status+': '+reason.statusText);		
+						});						
+					};
 				}
 		    };
 		});
@@ -144,7 +170,7 @@
 					HTML+='<input class="form-control" ng-model="model[k]" placeholder="{{k}}" required>';
 				}
 				if(v.type==='select'){
-					HTML+='<div class="btn-group"><label ng-repeat="item in v.options" class="btn btn-default" ng-model="model[k]" btn-radio="item">{{item}}</label></div>';
+					HTML+='<div class="btn-group"><label ng-repeat="item in v.options" class="btn btn-default btn-xs" ng-model="model[k]" btn-radio="item">{{item}}</label></div>';
 				}				
 				HTML+='</div>';
 				return HTML;
@@ -168,7 +194,7 @@
 		});
 		app.factory("Data", ['$http',
 		    function ($http) { 
-		        var serviceBase = 'http://localhost:8080/arbalo/api/event';
+		        var serviceBase = '../api/event';
 		        var obj = {};
 		        obj.list = function () {
 					return $http.get(serviceBase)
@@ -204,7 +230,23 @@
 						console.log('ERROR: EventsService.delete() returned with status ' + status);
 					});
 		        };
-
+		        obj.showMsg = function (id) {
+					return $http({
+					  url: serviceBase + '/' + id + '/message',
+					  method: 'GET',
+					  transformResponse: [function (data) {
+					      return data;
+					  }]
+					});	        	
+				};	
+		        obj.sendMsg = function (id) {
+					return $http.get(serviceBase + '/' + id + '/send')
+					.success(function(data, status) {				
+					})
+					.error(function(data, status, headers, config) {
+						console.log('ERROR: EventsService.send() returned with status ' + status);
+					});
+		        };					        
 		        return obj;
 		}]);		
 		</script>

@@ -16,14 +16,13 @@
 			var app = angular.module('eventApp', []);
 			app.controller('appCtrl', function($scope, $http, $location){
 				$scope.eventData={};
-				var serviceBase = 'http://localhost:8080/opentdc-services-test/api/event';
+				var serviceBase = '../api/event';
 				var searchObject = $location.absUrl();
 				var parts = searchObject.split('=');
 				if(parts[1]){
 					var id=parts[1];				
 					$http.get(serviceBase + '/' + id).success(function (data, status) {
 						$scope.eventData=data.eventModel;
-						console.log($scope.eventData)
 					})
 					.error(function(data, status, headers, config) {
 						console.log('ERROR: EventService.list() returned with status ' + status);
@@ -38,9 +37,9 @@
 					eventChange();
 				}				
 				var eventChange = function(){
-					var data = {eventsModel:$scope.eventData};
+					var data = {eventModel:$scope.eventData};
 					$http.put(serviceBase + '/' + $scope.eventData.id, data).success(function(data, status) {
-						$scope.eventData=data.eventsModel;			
+						$scope.eventData=data.eventModel;			
 					})
 					.error(function(data, status, headers, config) {
 						console.log('ERROR: EventService.post() returned with status ' + status);
@@ -90,13 +89,13 @@
 					<div id="header" class="container">
 						
 						<!-- Logo -->
-	                         <div class="logo" onclick="top.location.href='index.php'">Arbalo</div>
-                             <div class="logo_byline" onclick="top.location.href='index.php'">the digital company</div>
+	                         <div class="logo" onclick="top.location.href='index.html'">Arbalo</div>
+                             <div class="logo_byline" onclick="top.location.href='index.html'">the digital company</div>
 						
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a href="index.php">Home</a></li>
+									<li><a href="index.html">Home</a></li>
                                     <li><a href="#DigitalOffice">Digitalisierung</a></li>
                                     <li><a href="#Aboutus">Speaker</a></li>
                                     <li><a href="#Contact">Anmeldung</a></li>
@@ -327,8 +326,8 @@
 										<div class="row half">
 											<div class="12u">
 												<ul class="actions">
-													<li ng-if="eventData.invitationState==='INITIAL' || eventData.invitationState==='SENT' || eventData.invitationState==='EXCUSED'"><a ng-click="eventAccept()" class="button alt2"><i class="fa fa-check"></i> Ich nehme teil</a></li>
-													<li ng-if="eventData.invitationState==='INITIAL' || eventData.invitationState==='SENT' || eventData.invitationState==='REGISTERED'"><a ng-click="eventReject()" class="button alt"><i class="fa fa-times"></i> Ich bin verhindert</a></li>
+													<li ng-if="eventData.invitationState==='INITIAL' || eventData.invitationState==='SENT' || eventData.invitationState==='EXCUSED'"><a href="javascript:void(0)" ng-click="eventAccept()" class="button alt2"><i class="fa fa-check"></i> Ich nehme teil</a></li>
+													<li ng-if="eventData.invitationState==='INITIAL' || eventData.invitationState==='SENT' || eventData.invitationState==='REGISTERED'"><a href="javascript:void(0)"  ng-click="eventReject()" class="button alt"><i class="fa fa-times"></i> Ich bin verhindert</a></li>
 												</ul>
 											</div>
 										</div>

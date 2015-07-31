@@ -16,7 +16,6 @@
 		<ant antfile="../addressbooks-service-opencrx/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../gifts-service/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../gifts-service-file/build.xml" target="${target}" inheritAll="false" />
-		<ant antfile="../gifts-service-opencrx/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../rates-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../rates-service-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../rates-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
@@ -36,7 +35,6 @@
 		<ant antfile="../tags-service-file/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../texts-service/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../texts-service-file/build.xml" target="${target}" inheritAll="false" />
-		<ant antfile="../texts-service-opencrx/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../events-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../events-service-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../events-service-mongo/build.xml" target="${target}" inheritAll="false" />		

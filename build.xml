@@ -38,6 +38,8 @@
 		<ant antfile="../events-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../events-service-file/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../events-service-mongo/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../invitations-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../invitations-service-mongo/build.xml" target="${target}" inheritAll="false" />		
 	</target>
 	
 	<target name="clean">
@@ -59,6 +61,7 @@
 			<zipfileset dir="src/war/opentdc-services-test.war" />
 			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/services-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-mongo/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/addressbooks-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/gifts-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
@@ -78,8 +81,12 @@
 			<zipfileset dir="../${java.build.platform}/texts-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/texts-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
 			<zipfileset dir="../${java.build.platform}/events-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
-			<zipfileset dir="../${java.build.platform}/events-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/events-service-mongo/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/invitations-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/invitations-service-mongo/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
 			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/mongodb/${java.build.platform}/mongo-java-driver/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/freemarker/${java.build.platform}/freemarker-2.3.23/" includes="*.jar" prefix="WEB-INF/lib" />	
 <!--
 			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
 -->

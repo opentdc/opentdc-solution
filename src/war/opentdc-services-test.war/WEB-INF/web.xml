@@ -36,16 +36,8 @@
 		<param-value>org.opentdc.texts.file.FileServiceProvider</param-value>
 	</context-param>
 	<context-param>
-		<param-name>EventsService.serviceProvider</param-name>
-		<param-value>org.opentdc.events.mongo.MongodbServiceProvider</param-value>
-	</context-param>
-	<context-param>
 		<param-name>InvitationsService.serviceProvider</param-name>
 		<param-value>org.opentdc.invitations.mongo.MongodbServiceProvider</param-value>
-	</context-param>
-	<context-param>
-		<param-name>GiftsService.serviceProvider</param-name>
-		<param-value>org.opentdc.gifts.file.FileServiceProvider</param-value>
 	</context-param>
 	<context-param>
 		<param-name>TemplateDir</param-name>
@@ -94,8 +86,6 @@
 				org.opentdc.wtt.WttService,
 				org.opentdc.tags.TagsService,
 				org.opentdc.texts.TextsService,
-				org.opentdc.gifts.GiftsService,
-				org.opentdc.events.EventsService,
 				org.opentdc.invitations.InvitationsService
 			</param-value>
 		</init-param>

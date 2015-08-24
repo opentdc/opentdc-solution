@@ -13,6 +13,9 @@
 		<ant antfile="../services-mongo/build.xml" target="${target}" inheritAll="false" />	
 		<ant antfile="../addressbooks-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../addressbooks-service-file/build.xml" target="${target}" inheritAll="false" />		
+<!--
+		<ant antfile="../addressbooks-service-mongo/build.xml" target="${target}" inheritAll="false" />		
+-->
 		<ant antfile="../addressbooks-service-opencrx/build.xml" target="${target}" inheritAll="false" />
 		<ant antfile="../rates-service/build.xml" target="${target}" inheritAll="false" />		
 		<ant antfile="../rates-service-file/build.xml" target="${target}" inheritAll="false" />		
@@ -40,7 +43,7 @@
 		<ant antfile="../wtt-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
 	</target>
 	
-	<target name="clean">
+	<target name="clean" description="remove all generated files">
 		<antcall target="build-projects" inheritAll="false">
 			<param name="target" value="clean" />
 		</antcall>
@@ -53,7 +56,10 @@
 		</antcall>
 	</target>
 		
-	<target name="assemble" depends="deliverables" description="Create WARs for opentdc solution">
+	<target name="assemble" depends="assemble-test,assemble-file,assemble-mongo,assemble-opencrx,assemble-app" description="Create WARs for opentdc solution">
+	</target>
+	
+	<target name="assemble-test" depends="deliverables" description="old legacy replace by impl-specific builds">
 		<!-- opentdc-services-test.war -->
 		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-test.war">
 			<zipfileset dir="src/war/opentdc-services-test.war" />
@@ -85,6 +91,99 @@
 			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
 -->
 		</zip>
+	</target>
+		
+	<target name="assemble-file" depends="deliverables" description="opentdc service with file-based storage provider">
+		<!-- opentdc-services-file.war -->
+		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-file.war">
+			<zipfileset dir="src/war/opentdc-services-file.war" />
+			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/tags-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/tags-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/texts-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/texts-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+<!--
+			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+-->
+		</zip>
+	</target>
+	
+	<target name="assemble-mongo" depends="deliverables" description="opentdc service with mongodb-based storage provider">
+		<!-- opentdc-services-mongo.war -->
+		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-mongo.war">
+			<zipfileset dir="src/war/opentdc-services-mongo.war" />
+			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-mongo/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/tags-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/tags-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/texts-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/texts-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="../opt/mongodb/${java.build.platform}/mongodb/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+<!--
+			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+-->
+		</zip>
+	</target>
+
+	<target name="assemble-opencrx" depends="deliverables" description="opentdc service with opencrx-based storage provider">
+	<!-- opentdc-services-file.war -->
+		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services-opencrx.war">
+			<zipfileset dir="src/war/opentdc-services-opencrx.war" />
+			<zipfileset dir="../${java.build.platform}/services-generic/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/services-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/addressbooks-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/rates-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/resources-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/users-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/workrecords-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/wtt-service-opencrx/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../${java.build.platform}/tags-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+			<zipfileset dir="../${java.build.platform}/tags-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="../opt/google/${java.build.platform}/gson/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+<!--
+			<zipfileset dir="../opt/swagger/${java.build.platform}/swagger/lib/" includes="*.jar" prefix="WEB-INF/lib" />			
+-->
+			<zipfileset dir="${openmdx.home}/${java.build.platform}/client/lib/" includes="openmdx-client.jar" prefix="WEB-INF/lib" />			
+			<zipfileset dir="${opencrx.home}/${java.build.platform}/core/lib/" includes="opencrx-client.jar" prefix="WEB-INF/lib" />			
+		</zip>
+	</target>
+
+	<target name="assemble-app" depends="deliverables" description="old legacy replaced by app-specific builds in separate solution projects">
 		<!-- opentdc-services.war -->
 		<zip destfile="../${java.build.platform}/solution/deployment-unit/opentdc-services.war">
 			<zipfileset dir="src/war/opentdc-services.war" />
